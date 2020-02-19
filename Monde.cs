@@ -32,32 +32,32 @@ namespace WorldOfAston
         /// <summary>
         /// Cette méthode statique permet de faire combattre deux combattants jusqu'à ce que l'un deux n'ait plus de vie
         /// </summary>
-        /// <param name="personnage"></param>
-        /// <param name="monstre"></param>
-        public static void Combat(Personnage personnage, Monstre monstre)
+        /// <param name="combattant1"></param>
+        /// <param name="combattant2"></param>
+        public static void Combat(ICombattant combattant1, ICombattant combattant2)
         {
             int tour = 1;
-            while (personnage.PointDeVie > 0 && monstre.PointDeVie > 0)
+            while (combattant1.PointDeVie > 0 && combattant2.PointDeVie > 0)
             {
                 Console.WriteLine("------- TOUR " + tour + "-------");
                 if (tour % 2 != 0)
                 {
-                    monstre.PointDeVie -= personnage.Degats;
+                    combattant1.Attaquer(combattant2);
                 }
                 else
                 {
-                    personnage.PointDeVie -= monstre.Degats;
+                    combattant2.Attaquer(combattant1);
                 }
                 Console.ReadLine(); // Pause
                 tour++;
             }
-            if (personnage.PointDeVie <= 0)
+            if (combattant1.PointDeVie <= 0)
             {
-                Console.WriteLine(monstre.Nom + " gagne ce combat!");
+                Console.WriteLine(combattant2.Nom + " gagne ce combat!");
             }
             else
             {
-                Console.WriteLine(personnage.Nom + " gagne ce combat!");
+                Console.WriteLine(combattant1.Nom + " gagne ce combat!");
             }
         }
 
