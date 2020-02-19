@@ -25,7 +25,7 @@ namespace WorldOfAston
         public static Monstre MonstreFactory()
         {
             Random random = new Random();
-            Monstre monstre = new Monstre(genererNom(), random.Next(70,130), random.Next(5, 15));
+            Monstre monstre = new Monstre(genererNom(), random.Next(70, 130), random.Next(5, 15));
             return monstre;
         }
 
