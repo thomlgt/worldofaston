@@ -26,7 +26,7 @@ namespace WorldOfAston
         /// Cette méthode surcharge la méthode ToString pour afficher un personnage
         /// </summary>
         /// <returns></returns>
-        public virtual string ToString()
+        public override string ToString()
         {
             return $"Nom: {Nom} | Vie: {PointDeVie} | Degats: {Degats}";
         }

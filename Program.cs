@@ -6,7 +6,7 @@ namespace WorldOfAston
     {
         static void Main(string[] args)
         {
-            Monde.PersonnageFactory();
+            Monde.Combat(Monde.PersonnageFactory(), Monde.MonstreFactory());
         }
     }
 }
