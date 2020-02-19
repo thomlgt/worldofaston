@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WorldOfAston
 {
-    abstract class AbstractCombattant : ICombattant
+    abstract class AbstractCombattant : IUniqueCombattant
     {
         public string Nom { get; set; }
         public int PointDeVie { get; set; }
@@ -35,7 +35,7 @@ namespace WorldOfAston
         /// Cette méthode appelle la méthode Défendre pour infliger des dégats à un adversaire
         /// </summary>
         /// <param name="adversaire"></param>
-        public virtual void Attaquer(ICombattant adversaire)
+        public virtual void Attaquer(IUniqueCombattant adversaire)
         {
             Console.WriteLine($"{Nom} attaque!");
             adversaire.Defendre(Degats);

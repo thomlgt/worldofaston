@@ -19,7 +19,7 @@ namespace WorldOfAston
             BasicAttaque basicAttaque = new BasicAttaque("Attaque Basique", "", 10, 0.20);
             listAttaques.Add(basicAttaque);
             Classe classe = new Classe("Mage", listAttaques);
-            classes.Add(classe.Nom, classe);
+            classes.Add(classe.Nom.ToLower(), classe);
             // Fin d'ajout d'une classe à une liste de classe------------------------
 
             Console.WriteLine("Saisissez le nom du personnage :");
@@ -32,13 +32,13 @@ namespace WorldOfAston
             {
                 Console.WriteLine("Saisissez la classe du personnage :");
                 string nomClasse = Console.ReadLine();
-                if (classes.ContainsKey(nomClasse))
+                if (classes.ContainsKey(nomClasse.ToLower()))
                 {
-                    classePerso = GetClasse(nomClasse);
+                    classePerso = GetClasse(nomClasse.ToLower());
                     isFound = true;
                 } else
                 {
-                    Console.WriteLine("La classe n'a pas été trouvée");
+                    Console.WriteLine("La classe n'a pas été trouvée, recommencez!");
                 }
             }
             

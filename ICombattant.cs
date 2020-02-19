@@ -6,11 +6,7 @@ namespace WorldOfAston
 {
     interface ICombattant
     {
-        public string Nom { get; set; }
-        public int PointDeVie { get; set; }
-        public int Degats { get; set; }
-
-        public void Attaquer(ICombattant adversaire);
+        public void Attaquer(IUniqueCombattant adversaire);
         public void Defendre(int degats);
     }
 }

@@ -21,7 +21,7 @@ namespace WorldOfAston
         /// Cette méthode appelle la méthode Défendre pour infliger des dégats à un adversaire
         /// </summary>
         /// <param name="adversaire"></param>
-        public override void Attaquer(ICombattant adversaire)
+        public override void Attaquer(IUniqueCombattant adversaire)
         {
             Console.WriteLine($"{Nom} attaque!");
             adversaire.Defendre(Classe.GetAttaque().LancerAttaque(this, adversaire));
