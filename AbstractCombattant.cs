@@ -35,9 +35,9 @@ namespace WorldOfAston
         /// Cette méthode appelle la méthode Défendre pour infliger des dégats à un adversaire
         /// </summary>
         /// <param name="adversaire"></param>
-        public void Attaquer(ICombattant adversaire)
+        public virtual void Attaquer(ICombattant adversaire)
         {
-            Console.WriteLine(Nom + " attaque !");
+            Console.WriteLine($"{Nom} attaque!");
             adversaire.Defendre(Degats);
         }
 
@@ -47,9 +47,9 @@ namespace WorldOfAston
         /// <param name="degats"></param>
         public void Defendre(int degats)
         {
-            Console.WriteLine(Nom + " prend " + degats + " points de dégats");
+            Console.WriteLine($"{Nom} prend {degats} points de dégats");
             PointDeVie -= degats;
-            Console.WriteLine(Nom + " a maintenant " + PointDeVie + "pdv");
+            Console.WriteLine($"{Nom} a maintenant {PointDeVie}pdv");
         }
     }
 }

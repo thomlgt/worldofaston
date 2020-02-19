@@ -16,7 +16,7 @@ namespace WorldOfAston
 
         }
 
-        public BasicAttaque(string nom, string description, int degats, int rater)
+        public BasicAttaque(string nom, string description, int degats, double rater)
         {
             Nom = nom;
             Description = description;
@@ -35,6 +35,7 @@ namespace WorldOfAston
             Random random = new Random();
             if(random.NextDouble() < Rater)
             {
+                Console.WriteLine("L'attaque a échouée....");
                 return 0;
             }
             return Degats;

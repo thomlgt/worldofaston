@@ -6,15 +6,43 @@ namespace WorldOfAston
 {
     static class Monde
     {
+        private static Dictionary<string, Classe> classes = new Dictionary<string, Classe>();
+
         /// <summary>
         /// Cette méthode statique permet de créer un nouveau personnage en demandant son nom à l'utilisateur
         /// </summary>
         /// <returns></returns>
         public static Personnage PersonnageFactory()
         {
+            // Ajout d'une classe à une liste de classe------------------------------
+            List<IAttaque> listAttaques = new List<IAttaque>();
+            BasicAttaque basicAttaque = new BasicAttaque("Attaque Basique", "", 10, 0.20);
+            listAttaques.Add(basicAttaque);
+            Classe classe = new Classe("Mage", listAttaques);
+            classes.Add(classe.Nom, classe);
+            // Fin d'ajout d'une classe à une liste de classe------------------------
+
             Console.WriteLine("Saisissez le nom du personnage :");
             string nom = Console.ReadLine();
-            Personnage personnage = new Personnage(nom, 100, 10);
+
+            bool isFound = false;
+            Classe classePerso = new Classe();
+
+            while (!isFound)
+            {
+                Console.WriteLine("Saisissez la classe du personnage :");
+                string nomClasse = Console.ReadLine();
+                if (classes.ContainsKey(nomClasse))
+                {
+                    classePerso = GetClasse(nomClasse);
+                    isFound = true;
+                } else
+                {
+                    Console.WriteLine("La classe n'a pas été trouvée");
+                }
+            }
+            
+            Personnage personnage = new Personnage(nom, 100, 10, classePerso);
             return personnage;
         }
 
@@ -39,7 +67,7 @@ namespace WorldOfAston
             int tour = 1;
             while (combattant1.PointDeVie > 0 && combattant2.PointDeVie > 0)
             {
-                Console.WriteLine("------- TOUR " + tour + "-------");
+                Console.WriteLine($"------- TOUR {tour} -------");
                 if (tour % 2 != 0)
                 {
                     combattant1.Attaquer(combattant2);
@@ -59,6 +87,18 @@ namespace WorldOfAston
             {
                 Console.WriteLine(combattant1.Nom + " gagne ce combat!");
             }
+        }
+
+        /// <summary>
+        /// Cette méthode teste si la classe demandée par l'utilisateur existe, et la renvoie
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <returns></returns>
+        public static Classe GetClasse(string nom)
+        {
+            Classe result = new Classe();
+            result = classes.GetValueOrDefault(nom);
+            return result;
         }
 
         /// <summary>
